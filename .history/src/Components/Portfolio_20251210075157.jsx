@@ -60,29 +60,23 @@ const Portfolio = () => {
   return (
     <section className="padding" id="portfolio">
       <h2 style={{ textAlign: "center" }}>Portfolio</h2>
-      {/* 
-          修改说明：
-          1. width: "80%" -> 让内容只占屏幕宽度的80%，这样左右两边会自动各留出10%的空白，解决了左边距问题。
-          2. margin: "0 auto" -> 确保这80%的内容在页面中间居中。
-          3. gap: "4rem" -> 统一设置图片和右侧文字之间的间距，替代之前的 marginLeft，让布局更整齐。
-      */}
-      <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem", width: "80%", margin: "0 auto", gap: "4rem" }}>
-        {/* 图片容器：flex: 1 让它占据一半空间 */}
-        <div style={{ flex: 1, alignSelf: "center" }}>
+      <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
+        {/* 图片容器：调整最大宽度，并确保图片自适应 */}
+        <div style={{ maxWidth: "40%", alignSelf: "center" }}>
           <img
             src={image}
             style={{
               height: "90%",
               width: "100%",
               objectFit: "cover",
-              borderRadius: "8px",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+              borderRadius: "8px", // 可选：加一点圆角更现代
+              boxShadow: "0 4px 8px rgba(0,0,0,0.1)", // 可选：加一点阴影增加层次感
             }}
             alt={imageAltText}
           />
         </div>
-        {/* 内容容器：flex: 1 让它占据另一半空间，移除 marginLeft */}
-        <div className="container" style={{ flex: 1, alignSelf: "center" }}>
+        {/* 内容容器：增加左边距，确保不紧贴图片 */}
+        <div className="container" style={{ maxWidth: "50%", alignSelf: "center", marginLeft: "4rem" }}>
           {projectList.map((project) => (
             <div className="box" key={project.title}>
               <a href={project.url} target="_blank" rel="noopener noreferrer">
